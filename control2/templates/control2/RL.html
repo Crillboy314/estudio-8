@@ -1,0 +1,68 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Su mensaje
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'global/matrix.css' %}" />
+
+    <style>
+        .highlight-row-on-hover:hover td {
+            background-color: #fcf8e3;
+        }
+
+    </style>
+
+{% endblock %}
+
+{% block content %}
+        {% if player.id_in_group == 1 %}
+
+            <img src="{% static 'control/control2-graph-P1.png' %}" class="center" width="80%" height="80%" />
+
+        {% else %}
+
+            <img src="{% static 'control/control2-graph-P2.png' %}" class="center" width="80%" height="80%" />
+
+        {% endif %}
+
+<br />
+<div class="form-group required">
+    {% if player.id_in_group == 1 %}
+    <h2> Usted es la Persona 1 </h2>
+    <p>
+        {% if group.send_answer != None %} {%if group.send_answer != 'ask' %} Mensaje de la Persona 2: "Yo escojo
+            {% if group.send_answer == 'R' %}
+                <img src="{% static 'control/right.png' %}" width="10%" height="10%"/>
+            {% else %}
+                <img src="{% static 'control/left.png' %}" width="10%" height="10%"/>
+            {% endif %}
+        ". {% endif %} {% endif %}<br>
+    </p>
+    <p> Su mensaje hacia el otro participante?<br>Esta no es su respuesta final </p>
+        {{ form.send_message.0 }} <img src="{% static 'control/left.png' %}" width="10%" height="10%"/> <br> <br>
+        {{ form.send_message.1 }} <img src="{% static 'control/right.png' %}" width="10%" height="10%"/> <br>
+        {{ form.send_message.errors}}
+    {% else %}
+    <h2> Usted es la Persona 2 </h2>
+    <p>
+        {% if group.send_message != None %} {% if group.send_message != 'ask' %} Mensaje de la Persona 1: "Yo escojo
+            {% if group.send_message == 'R' %}
+                <img src="{% static 'control/right.png' %}" width="10%" height="10%"/>
+            {% else %}
+                <img src="{% static 'control/left.png' %}" width="10%" height="10%"/>
+            {% endif %}
+        ". {% endif %} {% endif %}<br>
+    </p>
+    <p> Su mensaje hacia el otro participante?<br>Esta no es su respuesta final </p>
+        {{ form.send_answer.0 }} <img src="{% static 'control/left.png' %}" width="10%" height="10%"/> <br> <br>
+        {{ form.send_answer.1 }} <img src="{% static 'control/right.png' %}" width="10%" height="10%"/> <br>
+        {{ form.send_answer.errors}}
+    {% endif %}
+</div>
+
+{% next_button %}
+
+{% endblock %}
