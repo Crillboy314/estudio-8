@@ -78,9 +78,9 @@ class Player(BasePlayer):
         self.payoff = payoff_matrix[self.decision][self.other_player().decision]
 
     question_1 = models.IntegerField(
-    label = "Suppose that you are First Person, and that you select B, what would be your payout if Second Person also chooses B?",
+    label = "Suponga que usted es la Primera Persona, y que selecciona B, ¿cuál sería su pago si la Segunda Persona también elige B?",
     min=10,max=70)
 
     question_2 = models.IntegerField(
-    label = "Suppose that you are Second Person, you select B, what would be your payout if the First Person chooses A?",
+    label = "Suponga que usted es la Segunda Persona, y selecciona B, ¿cuál sería su pago si la Primera Persona elige A?",
     min=10,max=70)
