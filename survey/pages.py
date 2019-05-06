@@ -11,7 +11,7 @@ from .models import Constants
 
 class CognitiveReflectionTest(Page):
     form_model = 'player'
-    form_fields = ['education',
+    form_fields = [# 'education',
                    'intent',
                    'identity']
 
