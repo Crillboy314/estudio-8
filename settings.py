@@ -17,7 +17,7 @@ SESSION_CONFIGS = [
         'name': 'control',
         'display_name': 'Decision Making Activity (Español)',
         'num_demo_participants': 2,
-        'app_sequence': ['control', 'survey', 'payment_info'],
+        'app_sequence': ['control', 'survey', 'survey2', 'payment_info'],
     },
     {
         'name': 'control1',
