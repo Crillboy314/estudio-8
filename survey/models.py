@@ -35,7 +35,7 @@ class Player(BasePlayer):
 
     intent = models.StringField(
         choices=['Interesado','Generoso','Hostil','Cooperativo','Racional','Irracional'],
-        label='¿Qué crees que fue su intención del otro jugador en sus decisiones?',
+        label='¿Cuál crees que fue la intención del otro jugador en sus decisiones?',
         widget=widgets.RadioSelect)
 
     identity = models.StringField(
