@@ -17,28 +17,28 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
 
-    age = models.IntegerField(
-        label='What is your age?',
-        min=13, max=125)
+#    age = models.IntegerField(
+#        label='¿Qué edad tiene usted?',
+#        min=13, max=125)
 
-    gender = models.StringField(
-        choices=['Male', 'Female', 'Other'],
-        label='What is your gender?',
-        widget=widgets.RadioSelect)
+#   gender = models.StringField(
+#        choices=['Masculino', 'Femenino', 'Otro'],
+#        label='¿Qué es su género de usted?',
+#        widget=widgets.RadioSelect)
 
-    education = models.StringField(
-        choices=['No schooling','Primary School','Middle School','High School',
-        'Some College','Trade/Technical/Vocational Training','Associate Degree',
-        'Bachelor\'s Degree','Master\'s Degree','Doctorate'],
-        label='What is your highest level of education attained?',
-        widget=widgets.RadioSelect)
+#    education = models.StringField(
+#        choices=['Ningún','Educación Inicial (Jardín)','Educación General Básica (Primaria)','Bachillerato (Secundaria)',
+#        'Algunos estudios universitarios','Instituto','Licenciatura o equivalente',
+#        'Maestría o equivalente','Doctorado'],
+#        label='¿Cuál es su nivel educativo?',
+#        widget=widgets.RadioSelect)
 
     intent = models.StringField(
-        choices=['Selfish','Generous','Hostile','Cooperative','Rational','Irrational'],
-        label='What do you think the intent of the other player was in their decisions?',
+        choices=['Interesado','Generoso','Hostil','Cooperativo','Racional','Irracional'],
+        label='¿Qué crees que fue su intención del otro jugador en sus decisiones?',
         widget=widgets.RadioSelect)
 
     identity = models.StringField(
-        choices=['Yes','No','Maybe'],
-        label='If you knew the identity of the other player, would you have made a different decision?',
+        choices=['Sí','No','Quizás'],
+        label='Si supieras la identidad del otro jugador, ¿habrías tomado una decisión diferente?',
         widget=widgets.RadioSelect)

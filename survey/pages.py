@@ -4,18 +4,18 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
-class Demographics(Page):
-    form_model = 'player'
-    form_fields = ['age',
-                   'gender']
+#class Demographics(Page):
+#    form_model = 'player'
+#    form_fields = ['age',
+#                   'gender']
 
 class CognitiveReflectionTest(Page):
     form_model = 'player'
-    form_fields = ['education',
+    form_fields = [# 'education',
                    'intent',
                    'identity']
 
 page_sequence = [
-    Demographics,
+#    Demographics,
     CognitiveReflectionTest
 ]

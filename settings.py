@@ -5,7 +5,7 @@ from os import environ
 # the session config can be accessed from methods in your apps as self.session.config,
 # e.g. self.session.config['participation_fee']
 
-    
+
 SESSION_CONFIG_DEFAULTS = {
     'real_world_currency_per_point': 0.10,
     'participation_fee': 2.00,
@@ -15,25 +15,25 @@ SESSION_CONFIG_DEFAULTS = {
 SESSION_CONFIGS = [
     {
         'name': 'control',
-        'display_name': 'Decision Making Activity',
+        'display_name': 'Decision Making Activity (Español)',
         'num_demo_participants': 2,
-        'app_sequence': ['control', 'survey', 'payment_info'],
+        'app_sequence': ['control', 'survey', 'survey2', 'payment_info'],
     },
     {
         'name': 'control1',
-        'display_name': 'Decision Making Activity: Treatment 1',
+        'display_name': 'Decision Making Activity: Treatment 1 (Español)',
         'num_demo_participants': 2,
         'app_sequence': ['control1', 'survey', 'payment_info'],
     },
     {
         'name': 'control2',
-        'display_name': 'Decision Making Activity: Treatment 2',
+        'display_name': 'Decision Making Activity: Treatment 2 (Español)',
         'num_demo_participants': 2,
         'app_sequence': ['control2', 'survey', 'payment_info'],
     },
     {
         'name': 'all',
-        'display_name': 'Decision Making Activity: Random',
+        'display_name': 'Decision Making Activity: Random (Español)',
         'num_demo_participants': 2,
         'app_sequence': ['selector', 'control', 'control1', 'control2', 'survey', 'payment_info'],
     }
@@ -56,7 +56,7 @@ ROOMS = [
         'display_name': 'EXCEL Lab',
         'participant_label_file': 'excel_lab.txt',
         'use_secure_urls': False,
-    },    
+    },
 ]
 
 ADMIN_USERNAME = 'admin'

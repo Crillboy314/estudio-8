@@ -2,12 +2,16 @@
 {% load otree %}
 
 {% block title %}
-    Introducción
+    Encuesta
 {% endblock %}
 
 {% block content %}
 
-    {% include Constants.instructions_template %}
+    <p>
+        Por favor responda las siguientes preguntas.
+    </p>
+
+    {% formfields %}
 
     {% next_button %}
 
