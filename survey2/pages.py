@@ -8,7 +8,6 @@ class DemographicsPageOne(Page):
     form_model = 'player'
     form_fields = ['birthdate',                 # What's your birthdate?
                    'gender',                    # What's your gender?
-                   'dominant_hand',             # What's your dominant hand?
                    'maternal_lang',             # What is your maternal language?
                    'dialect',                   # Do you identify as a speaker of a specific dialect of this language?
                    'other_langs',               # What other languages do you speak well?
@@ -29,7 +28,6 @@ class DemographicsPageThree(Page):
                    'education_level',           # What is your education level?
                    'edu_countries',             # In which countries did you receive your education?
                    'edu_langs',                 # In what languages did you receive your education? (Allow specification)
-                   'bool_phil_course',          # Have you taken a philosophy course?
                    'phil_course_count']         # How many philosophy courses have you taken?
 
 class DemographicsPageFour(Page):

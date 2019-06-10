@@ -26,11 +26,6 @@ class Player(BasePlayer):
         label='¿Cuál es su género?',
         widget=widgets.RadioSelect)
 
-    dominant_hand = models.StringField(
-        choices=['Derecha','Izquierda','Ambidextro'],
-        label='¿Cuál es su mano dominante?',
-        widget=widgets.RadioSelect)
-
     maternal_lang = models.StringField(
         label='¿Cuál es su idioma materno?',
         widget=widgets.TextInput)
@@ -91,11 +86,6 @@ class Player(BasePlayer):
     edu_langs = models.StringField(
         label='¿En que idiomas recibió su educación? Por favor especifique.',
         widget=widgets.TextInput)
-
-    bool_phil_course = models.StringField(
-        choices=['Sí','No'],
-        label='¿Alguna vez ha tomado un curso de Filosofía?',
-        widget=widgets.RadioSelect)
 
     phil_course_count = models.StringField(
         choices=['Nunca he tomado un curso de Filosofía',
