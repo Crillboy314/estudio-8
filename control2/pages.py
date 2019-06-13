@@ -7,7 +7,7 @@ class Introduction(Page):
         return {
             'sufee' : self.session.config['participation_fee'],
             'erpoint' : self.session.config['real_world_currency_per_point']*100
-        }    
+        }
 
 class Tree1(Page):
     pass
@@ -25,12 +25,12 @@ class RLC_P1(Page):
 
     def send_message_choices(self):
         choices = [
-                ['LC', 'I choose ' + Constants.P1_codified_L],
-                ['RC', 'I choose ' + Constants.P1_codified_R]
+                ['LC', 'Yo elijo ' + Constants.P1_codified_L],
+                ['RC', 'Yo elijo ' + Constants.P1_codified_R]
         ]
         if not self.group.ask_used:
             choices.append(
-                ['ask', 'Ask the other participant to reveal the side of the figure they plan to choose for a cost of 5 points']
+                ['ask', 'Pida al otro participante que revele el lado de la figura que planean elegir por un costo de 5 puntos']
             )
         return choices
 
@@ -53,12 +53,12 @@ class RLC_P2(Page):
 
     def send_answer_choices(self):
         choices = [
-            ['LC', 'I choose ' + Constants.P2_codified_L],
-            ['RC', 'I choose ' + Constants.P2_codified_R]
+            ['LC', 'Yo elijo ' + Constants.P2_codified_L],
+            ['RC', 'Yo elijo ' + Constants.P2_codified_R]
         ]
         if not self.group.ask_used:
             choices.append(
-                ['ask', 'Ask the other participant to reveal the side of the figure they plan to choose for a cost of 5 points']
+                ['ask', 'Pida al otro participante que revele el lado de la figura que planean elegir por un costo de 5 puntos']
             )
         return choices
 
@@ -102,7 +102,7 @@ class RL_P1(Page):
         return self.player.id_in_group == 1 and self.group.check_Ask()
 
     def send_message_choices(self):
-        choices = [['L', 'I choose'], ['R', 'I choose']]
+        choices = [['L', 'Yo elijo'], ['R', 'Yo elijo']]
         return choices
 
 
@@ -115,7 +115,7 @@ class RL_P2(Page):
         return self.player.id_in_group == 2 and self.group.check_Ask()
 
     def send_answer_choices(self):
-        choices = [['L', 'I choose'], ['R', 'I choose']]
+        choices = [['L', 'Yo elijo'], ['R', 'Yo elijo']]
         return choices
 
 
@@ -163,11 +163,11 @@ class Quiz(Page):
 
     def error_message(self, values):
         if values['question_1'] != 40 and values['question_2'] != 20:
-            return 'Both questions are incorrect'
+            return 'Ambas preguntas son incorrectas'
         elif values['question_1'] == 40 and values['question_2'] != 20:
-            return 'Question 2 is incorrect'
+            return 'Pregunta 2 es incorrecta'
         elif values['question_1'] != 40 and values['question_2'] == 20:
-            return 'Question 1 is incorrect'
+            return 'Pregunta 1 es incorrecta'
 
 page_sequence = [
     Introduction,
