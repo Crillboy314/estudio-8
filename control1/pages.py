@@ -60,7 +60,8 @@ class Results(Page):
         }
 
     def app_after_this_page(self, upcoming_apps):
-        return 'survey'
+        if self.round_number == 2:
+            return 'gamble'
 
 
 class Quiz(Page):
