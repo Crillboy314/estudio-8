@@ -14,7 +14,7 @@ payoffs to each of the participants.
 class Constants(BaseConstants):
     name_in_url = 'control2'
     players_per_group = 2
-    num_rounds = 1
+    num_rounds = 2
 
     instructions_template = 'control2/Instructions.html'
     message_template = 'control2/Message.html'
@@ -90,10 +90,19 @@ class Group(BaseGroup):
                 }
         }
 
-        p1.payoff = payoff_matrix[p1.decision][p2.decision] + Constants.endowment - p1.paid_msg * Constants.message_cost
-        p2.payoff = payoff_matrix[p2.decision][p1.decision] + Constants.endowment - p2.paid_msg * Constants.message_cost
+        if self.round_number == 2:
+            p1.payoff = payoff_matrix[p1.decision][
+                            p2.decision] + Constants.endowment - p1.paid_msg * Constants.message_cost
+            p2.payoff = payoff_matrix[p2.decision][
+                            p1.decision] + Constants.endowment - p2.paid_msg * Constants.message_cost
+        else:
+            p1.trial_payoff = payoff_matrix[p1.decision][
+                                  p2.decision] + Constants.endowment - p1.paid_msg * Constants.message_cost
+            p2.trial_payoff = payoff_matrix[p2.decision][
+                                  p1.decision] + Constants.endowment - p2.paid_msg * Constants.message_cost
 
-    def check_Ask(self):
+
+def check_Ask(self):
         N = self.send_message == 'ask' or self.send_answer == 'ask'
         Y = self.ask_used and self.ask_answer
         return N and Y
@@ -106,6 +115,8 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect
     )
     paid_msg = models.IntegerField(initial=0)
+
+    trial_payoff = models.CurrencyField()
 
     def use_paid_message(self):
         self.paid_msg += 1
