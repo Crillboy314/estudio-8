@@ -8,14 +8,24 @@ class Introduction(Page):
         return {
             'sufee' : self.session.config['participation_fee'],
             'erpoint' : self.session.config['real_world_currency_per_point']*100
-        }    
+        }
+
+    def is_displayed(self):
+        return self.round_number == 1
+
 
 class Tree(Page):
-    pass
+
+    def is_displayed(self):
+        return self.round_number == 1
+
 
 class Quiz(Page):
     form_model = 'player'
     form_fields = ['question_1', 'question_2']
+
+    def is_displayed(self):
+        return self.round_number == 1
 
     def error_message(self, values):
         if values['question_1'] != 40 and values['question_2'] != 20:
@@ -48,7 +58,8 @@ class Results(Page):
         }
 
     def app_after_this_page(self, upcoming_apps):
-        return 'survey'
+        if self.round_number == 2:
+            return 'gamble'
 
 
 page_sequence = [
