@@ -102,7 +102,7 @@ class Group(BaseGroup):
                                   p1.decision] + Constants.endowment - p2.paid_msg * Constants.message_cost
 
 
-def check_Ask(self):
+    def check_Ask(self):
         N = self.send_message == 'ask' or self.send_answer == 'ask'
         Y = self.ask_used and self.ask_answer
         return N and Y
