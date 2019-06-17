@@ -13,7 +13,7 @@ payoffs to each of the participants.
 class Constants(BaseConstants):
     name_in_url = 'control1'
     players_per_group = 2
-    num_rounds = 1
+    num_rounds = 2
 
     instructions_template = 'control1/Instructions.html'
 
@@ -57,6 +57,8 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect
     )
 
+    trial_payoff = models.CurrencyField()
+
     def other_player(self):
         return self.get_others_in_group()[0]
 
@@ -75,7 +77,10 @@ class Player(BasePlayer):
                 }
         }
 
-        self.payoff = payoff_matrix[self.decision][self.other_player().decision]
+        if self.round_number == 2:
+            self.payoff = payoff_matrix[self.decision][self.other_player().decision]
+        else:
+            self.trial_payoff = payoff_matrix[self.decision][self.other_player().decision]
 
     question_1 = models.IntegerField(
     label = "Suponga que usted es la Primera Persona, y que selecciona B, ¿cuál sería su pago si la Segunda Persona también elige B?",

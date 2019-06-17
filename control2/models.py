@@ -14,7 +14,7 @@ payoffs to each of the participants.
 class Constants(BaseConstants):
     name_in_url = 'control2'
     players_per_group = 2
-    num_rounds = 1
+    num_rounds = 2
 
     instructions_template = 'control2/Instructions.html'
     message_template = 'control2/Message.html'
@@ -45,8 +45,8 @@ class Group(BaseGroup):
     send_message = models.StringField(
         # label = "What option do you want the participant B to think you will chose?",
         choices=[
-            ['L', 'the Left side'],
-            ['R', 'the Right side'],
+            ['L', 'el lado izquierdo'],
+            ['R', 'el lado derecho'],
             ['LC', Constants.P1_codified_L],
             ['RC', Constants.P1_codified_R],
             ['ask', 'A']
@@ -56,8 +56,8 @@ class Group(BaseGroup):
     send_answer = models.StringField(
         # label = "What option do you want the participant A to think you will chose?",
         choices=[
-            ['L', 'the Left side'],
-            ['R', 'the Right side'],
+            ['L', 'el lado izquierdo'],
+            ['R', 'el lado derecho'],
             ['LC', Constants.P2_codified_L],
             ['RC', Constants.P2_codified_R],
             ['ask', 'A']
@@ -67,11 +67,11 @@ class Group(BaseGroup):
     ask_used = models.BooleanField(initial=False)
     ask_answer = models.BooleanField(
         choices=[
-            [True, 'Yes'],
+            [True, 'Sí'],
             [False, 'No']
         ],
         widget=widgets.RadioSelect,
-        label="Your answer:"
+        label="Tu respuesta:"
     )
 
     def set_payoff(self):
@@ -90,10 +90,19 @@ class Group(BaseGroup):
                 }
         }
 
-        p1.payoff = payoff_matrix[p1.decision][p2.decision] + Constants.endowment - p1.paid_msg * Constants.message_cost
-        p2.payoff = payoff_matrix[p2.decision][p1.decision] + Constants.endowment - p2.paid_msg * Constants.message_cost
+        if self.round_number == 2:
+            p1.payoff = payoff_matrix[p1.decision][
+                            p2.decision] + Constants.endowment - p1.paid_msg * Constants.message_cost
+            p2.payoff = payoff_matrix[p2.decision][
+                            p1.decision] + Constants.endowment - p2.paid_msg * Constants.message_cost
+        else:
+            p1.trial_payoff = payoff_matrix[p1.decision][
+                                  p2.decision] + Constants.endowment - p1.paid_msg * Constants.message_cost
+            p2.trial_payoff = payoff_matrix[p2.decision][
+                                  p1.decision] + Constants.endowment - p2.paid_msg * Constants.message_cost
 
-    def check_Ask(self):
+
+def check_Ask(self):
         N = self.send_message == 'ask' or self.send_answer == 'ask'
         Y = self.ask_used and self.ask_answer
         return N and Y
@@ -107,6 +116,8 @@ class Player(BasePlayer):
     )
     paid_msg = models.IntegerField(initial=0)
 
+    trial_payoff = models.CurrencyField()
+
     def use_paid_message(self):
         self.paid_msg += 1
         self.group.ask_used = True
@@ -116,9 +127,9 @@ class Player(BasePlayer):
         return self.get_others_in_group()[0]
 
     question_1 = models.IntegerField(
-    label = "Suppose that you are First Person, and that you select your right symbol, what would be your payout if Second Person also chooses their right symbol?",
+    label = "Suponga que usted es la Primera Persona, y que selecciona el símbolo de la derecha, ¿cuál sería su pago si la Segunda Persona también elige el símbolo de la derecha?",
     min=10,max=70)
 
     question_2 = models.IntegerField(
-    label = "Suppose that you are Second Person, you select your right symbol, what would be your payout if the First Person chooses their left symbol?",
+    label = "Suponga que usted es la Segunda Persona, y selecciona el símbolo de la derecha, ¿cuál sería su pago si la Segunda Persona también elige el símbolo de la izquierda?",
     min=10,max=70)

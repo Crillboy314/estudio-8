@@ -18,33 +18,28 @@ class Group(BaseGroup):
 class Player(BasePlayer):
 
     birthdate = models.StringField(
-        label='¿Cuál es su fecha de nacimiento? Por favor, uses el formato día-mes-año (por ejemplo, 30-01-1998).',
+        label='¿Cuál es su fecha de nacimiento? Por favor, use el formato día-mes-año (por ejemplo, 30-01-1998).',
         widget=widgets.DateInput)
 
     gender = models.StringField(
         choices=['Masculino', 'Femenino', 'Otro'],
-        label='¿Qué es su género de usted?',
-        widget=widgets.RadioSelect)
-
-    dominant_hand = models.StringField(
-        choices=['Derecha','Izquierda','Ambidextro'],
-        label='¿Cuál es su mano dominante?',
+        label='¿Cuál es su género?',
         widget=widgets.RadioSelect)
 
     maternal_lang = models.StringField(
-        label='¿Cuál es su idioma materna?',
+        label='¿Cuál es su idioma materno?',
         widget=widgets.TextInput)
 
     dialect = models.StringField(
-        label='Se identifica usted como hablante / parlante de un dialecto particular o variedad de este idioma (o idiomas)? ¿En caso afirmativo, como se llama ese dialecto o por dónde se habla?',
+        label='Se identifica usted como hablante de un dialecto particular o variedad de este idioma (o idiomas)? ¿En caso afirmativo, como se llama ese dialecto o en dónde se habla?',
         widget=widgets.TextInput)
 
     other_langs = models.StringField(
-        label='¿Qué otros idiomas hablas bien?',
+        label='¿Qué otros idiomas habla bien?',
         widget=widgets.TextInput)
 
     langs_used_weekly = models.StringField(
-        label='¿Qué idiomas (incluyendo sus idiomas maternos y el Castellano) usas al menos una vez a la semana?',
+        label='¿Qué idiomas (incluyendo sus idiomas maternos y el Castellano) usa al menos una vez a la semana?',
         widget=widgets.TextInput)
 
     nationality = models.StringField(
@@ -74,7 +69,7 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect)
 
     profession = models.StringField(
-        label='Si usted no es estudiante, ¿cuál es su profesión? Si es estudiante, escribe \'NA\' en la caja',
+        label='Si usted no es estudiante, ¿cuál es su profesión? Si es estudiante, escriba \'NA\' en la caja',
         widget=widgets.TextInput)
 
     education_level = models.StringField(
@@ -91,11 +86,6 @@ class Player(BasePlayer):
     edu_langs = models.StringField(
         label='¿En que idiomas recibió su educación? Por favor especifique.',
         widget=widgets.TextInput)
-
-    bool_phil_course = models.StringField(
-        choices=['Sí','No'],
-        label='¿Alguna vez ha tomado un curso de Filosofía?',
-        widget=widgets.RadioSelect)
 
     phil_course_count = models.StringField(
         choices=['Nunca he tomado un curso de Filosofía',

@@ -60,7 +60,8 @@ class Results(Page):
         }
 
     def app_after_this_page(self, upcoming_apps):
-        return 'survey'
+        if self.round_number == 2:
+            return 'gamble'
 
 
 class Quiz(Page):
@@ -69,11 +70,11 @@ class Quiz(Page):
 
     def error_message(self, values):
         if values['question_1'] != 40 and values['question_2'] != 20:
-            return 'Both questions are incorrect'
+            return 'Ambas preguntas son incorrectas'
         elif values['question_1'] == 40 and values['question_2'] != 20:
-            return 'Question 2 is incorrect'
+            return 'Pregunta 2 es incorrecta'
         elif values['question_1'] != 40 and values['question_2'] == 20:
-            return 'Question 1 is incorrect'
+            return 'Pregunta 1 es incorrecta'
 
 page_sequence = [
     Introduction,

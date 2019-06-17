@@ -9,9 +9,25 @@
 
     <p>
         {% if same_choice %}
-            Ambos eligieron {{ my_decision }}.
+            Ambos eligieron 
+                {% if my_decision == "L" %}
+                    el lado izquierdo.
+                {% else %}
+                    el lado derecho.
+                {% endif %}
         {% else %}
-            Usted eligió {{ my_decision }} y el otro participante eligió {{ opponent_decision }}.
+            Usted eligió 
+                {% if my_decision == "L" %}
+                    el lado izquierdo
+                {% else %}
+                    el lado derecho
+                {% endif %}
+                y el otro participante eligió 
+                {% if opponent_decision == "L" %}
+                    el lado izquierdo.
+                {% else %}
+                    el lado derecho.
+                {% endif %}
         {% endif %}
     </p>
 
