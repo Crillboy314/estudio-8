@@ -116,7 +116,7 @@ class Player(BasePlayer):
     )
     paid_msg = models.IntegerField(initial=0)
 
-    trial_payoff = models.CurrencyField()
+    trial_payoff = models.CurrencyField(initial=0)
 
     def use_paid_message(self):
         self.paid_msg += 1
