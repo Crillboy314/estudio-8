@@ -42,3 +42,8 @@ class Player(BasePlayer):
         choices=['Sí','No','Quizás'],
         label='Si supieras la identidad del otro jugador, ¿habrías tomado una decisión diferente?',
         widget=widgets.RadioSelect)
+
+    risker = models.StringField(
+        choices=[' 0 Nada preparado para tomar riesgo','1','2','3','4','5','6','7','8','9','10 Preparado para tomar riesgo'],
+        label='Como te calificarías personalmente ? En general, Te consideras alguien preparado para tomar riesgo?',
+        widget=widgets.RadioSelect)

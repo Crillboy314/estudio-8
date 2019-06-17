@@ -13,7 +13,8 @@ class CognitiveReflectionTest(Page):
     form_model = 'player'
     form_fields = [# 'education',
                    'intent',
-                   'identity']
+                   'identity',
+                   'risker']
 
 page_sequence = [
 #    Demographics,
