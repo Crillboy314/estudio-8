@@ -2,7 +2,11 @@
 {% load otree %}
 
 {% block title %}
-    Su mensaje
+    {% if subsession.round_number == 1 %}
+        Ronda de Prueba: Su mensaje
+    {% else %}
+        Su mensaje
+    {% endif %}
 {% endblock %}
 
 {% block styles %}

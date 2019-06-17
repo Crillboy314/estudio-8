@@ -2,7 +2,11 @@
 {% load otree %}
 
 {% block title %}
-    Su elección
+    {% if player.round_number == 1 %}
+        Ronda de Prueba: Su eleccion
+    {% else %}
+        Su eleccion
+    {% endif %}
 {% endblock %}
 
 {% block styles %}
