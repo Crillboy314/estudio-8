@@ -33,6 +33,14 @@ class Player(BasePlayer):
         label='¿Cuál es su nivel educativo?',
         widget=widgets.RadioSelect)
 
+    language = models.StringField(
+        label='Cual es su lengua materna?',
+        widget=widgets.TextInput)
+
+    country = models.StringField(
+        label='En que país nació?',
+        widget=widgets.TextInput)
+
     intent = models.StringField(
         choices=['Interesado','Generoso','Hostil','Cooperativo','Racional','Irracional'],
         label='¿Qué crees que fue su intención del otro jugador en sus decisiones?',
