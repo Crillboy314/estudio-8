@@ -44,7 +44,7 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect
     )
 
-    trial_payoff = models.CurrencyField()
+    trial_payoff = models.CurrencyField(initial=0)
 
     def other_player(self):
         return self.get_others_in_group()[0]
