@@ -7,9 +7,9 @@
 
 {% block content %}
     <p>
-        You chose <strong>{{player.gamble_number}}</strong> and the event was <strong>{{player.event}}</strong>
-        As a result, you earned <strong>{{ player.gain }}</strong> based on your decision and the random event.
-        The total amount in money you have earned from the activity is <strong>{{ participant.payoff_plus_participation_fee }}</strong>, including your participation fee.
+        Tu escogiste <strong>{{player.gamble_number}}</strong> y el evento fue <strong>{{player.event}}</strong>
+        Como resultado, tu ganaste <strong>{{ player.gain }}</strong> basado en tu decisión y el evento aleatorio.
+        La cantidad total de dinero que has ganado con esta actividad es <strong>{{ participant.payoff_plus_participation_fee }}</strong>, incluyendo tu pago de presentación.
     </p>
 
     {% next_button %}

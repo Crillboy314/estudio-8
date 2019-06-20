@@ -2,7 +2,7 @@
 {% load otree static %}
 
 {% block title %}
-    GAMBLE SELECTION
+    SELECCION CON RIESGO
 {% endblock %}
 {% block styles %}
 <style>
@@ -37,18 +37,18 @@
     <div class="card-body">
 
     <h3>
-        Instructions
+        Instrucciones
     </h3>
 
     <p>
-        In this section, you will select from five different gambles which gamble you would like to play. The five different gambles are listed in the table below. You must select one and only one of these gambles. On the following page, you will be able to select your gamble from the table.  Each gamble has two possible outcomes (Event A or Event B) with the indicated probabilities of occurring. Your compensation will be determined by:  1) which of the five gambles you select; and 2) which of the two possible events occur.
+        En esta sección, deberás escoger entre un grupo de 5 juegos con riesgo, cual te gustaria jugar
 
-        For example:  If you select Gamble 4 from the table and Event A occurs, you will be paid 40 points.  If Event B occurs, you will be paid 4 points.
+        Por ejemplo: Si seleccionas el juego 4 de la tabla y el evento A ocurre, tu recibirás un pago de 40 puntos. Si el evento B ocurre, recibirás un pago de 4 puntos
 
-        For every gamble, each event has a 50% chance of occurring.
+        Por cada juego, cada evento tiene una probabilidad de ocurrencia de 50%
 
-        Here we will be using points to compute your final payoff, based on an <strong>
-        exchange rate of {{ erpoint|c }} equivalent to $1</strong>.
+        Aquí se usarán puntos para calcular tu pago final, basado en <strong>
+        una tasa de cambio de {{ erpoint|c }} equivalente a $1</strong>.
     </p>
         <div class="centerT"><table id="t01">
             <tr>
