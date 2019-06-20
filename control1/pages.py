@@ -8,11 +8,15 @@ class Introduction(Page):
         return {
             'sufee' : self.session.config['participation_fee'],
             'erpoint' : self.session.config['real_world_currency_per_point']*100
-        }    
+        }
+
+    def is_displayed(self):
+        return self.round_number == 1
 
 
 class Tree(Page):
-    pass
+    def is_displayed(self):
+        return self.round_number == 1
 
 
 class SendMessageP1(Page):
@@ -75,6 +79,10 @@ class Quiz(Page):
             return 'Pregunta 2 es incorrecta'
         elif values['question_1'] != 40 and values['question_2'] == 20:
             return 'Pregunta 1 es incorrecta'
+
+    def is_displayed(self):
+        return self.round_number == 1
+
 
 page_sequence = [
     Introduction,
