@@ -23,7 +23,7 @@ class Player(BasePlayer):
 
     gender = models.StringField(
         choices=['Masculino', 'Femenino', 'Otro'],
-        label='¿Qué es su género de usted?',
+        label='¿Qué es su género?',
         widget=widgets.RadioSelect)
 
     education = models.StringField(
