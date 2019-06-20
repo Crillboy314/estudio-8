@@ -77,10 +77,10 @@ class Player(BasePlayer):
                 }
         }
 
-        if self.round_number == 2:
-            self.payoff = payoff_matrix[self.decision][self.other_player().decision]
-        else:
+        if self.round_number == 1:
             self.trial_payoff = payoff_matrix[self.decision][self.other_player().decision]
+        else:
+            self.payoff = payoff_matrix[self.decision][self.other_player().decision]
 
     question_1 = models.IntegerField(
     label = "Suponga que usted es la Primera Persona, y que selecciona B, ¿cuál sería su pago si la Segunda Persona también elige B?",
