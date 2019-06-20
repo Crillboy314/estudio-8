@@ -131,5 +131,5 @@ class Player(BasePlayer):
     min=10,max=70)
 
     question_2 = models.IntegerField(
-    label = "Suponga que usted es la Segunda Persona, y selecciona el símbolo de la derecha, ¿cuál sería su pago si la Segunda Persona también elige el símbolo de la izquierda?",
+    label = "Suponga que usted es la Segunda Persona, y selecciona el símbolo de la derecha, ¿cuál sería su pago si la Primera Persona elige el símbolo de la izquierda?",
     min=10,max=70)
