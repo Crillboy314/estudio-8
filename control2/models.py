@@ -90,17 +90,16 @@ class Group(BaseGroup):
                 }
         }
 
-        if self.round_number == 2:
-            p1.payoff = payoff_matrix[p1.decision][
+        if self.round_number == 1:
+            p1.trial_payoff = payoff_matrix[p1.decision][
                             p2.decision] + Constants.endowment - p1.paid_msg * Constants.message_cost
-            p2.payoff = payoff_matrix[p2.decision][
+            p2.trial_payoff = payoff_matrix[p2.decision][
                             p1.decision] + Constants.endowment - p2.paid_msg * Constants.message_cost
         else:
-            p1.trial_payoff = payoff_matrix[p1.decision][
+            p1.payoff = payoff_matrix[p1.decision][
                                   p2.decision] + Constants.endowment - p1.paid_msg * Constants.message_cost
-            p2.trial_payoff = payoff_matrix[p2.decision][
+            p2.payoff = payoff_matrix[p2.decision][
                                   p1.decision] + Constants.endowment - p2.paid_msg * Constants.message_cost
-
 
     def check_Ask(self):
         N = self.send_message == 'ask' or self.send_answer == 'ask'
