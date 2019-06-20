@@ -3,15 +3,13 @@ from random import randint
 
 
 class GambleInstructions(Page):
+    form_model = 'player'
+    form_fields = ['gamble_number']
+
     def vars_for_template(self):
         return{
             'erpoint': self.session.config['real_world_currency_per_point'] * 100
         }
-
-
-class Gamble(Page):
-    form_model = 'player'
-    form_fields = ['gamble_number']
 
     def before_next_page(self):
         event = randint(0, 100)
@@ -27,6 +25,5 @@ class GambleResults(Page):
 
 page_sequence = [
     GambleInstructions,
-    Gamble,
     GambleResults
 ]
