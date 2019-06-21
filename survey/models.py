@@ -16,31 +16,6 @@ class Group(BaseGroup):
     pass
 
 class Player(BasePlayer):
-
-    age = models.IntegerField(
-       label='¿Qué edad tiene usted?',
-      min=13, max=125)
-
-    gender = models.StringField(
-        choices=['Masculino', 'Femenino', 'Otro'],
-        label='¿Qué es su género?',
-        widget=widgets.RadioSelect)
-
-    education = models.StringField(
-       choices=['Ningún','Educación Inicial (Jardín)','Educación General Básica (Primaria)','Bachillerato (Secundaria)',
-        'Algunos estudios universitarios','Instituto','Licenciatura o equivalente',
-        'Maestría o equivalente','Doctorado'],
-        label='¿Cuál es su nivel educativo?',
-        widget=widgets.RadioSelect)
-
-    language = models.StringField(
-        label='Cual es su lengua materna?',
-        widget=widgets.TextInput)
-
-    country = models.StringField(
-        label='En que país nació?',
-        widget=widgets.TextInput)
-
     intent = models.StringField(
         choices=['Interesado','Generoso','Hostil','Cooperativo','Racional','Irracional'],
         label='¿Cuál crees que fue la intención del otro jugador en sus decisiones?',
@@ -52,7 +27,7 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect)
 
     risker = models.StringField(
-        choices=[' 0 Nada preparado para tomar riesgo','1','2','3','4','5','6','7','8','9','10 Preparado para tomar riesgo'],
+        choices=['0 Nada preparado para tomar riesgo','1','2','3','4','5','6','7','8','9','10 Preparado para tomar riesgo'],
         label='Como te calificarías personalmente ? En general, Te consideras alguien preparado para tomar riesgo?',
         widget=widgets.RadioSelect)
 
