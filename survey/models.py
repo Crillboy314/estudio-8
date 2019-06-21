@@ -17,7 +17,7 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     intent = models.StringField(
-        choices=['Interesado','Generoso','Hostil','Cooperativo','Racional','Irracional'],
+        choices=['Interesado','Generoso','Hóstil','Cooperativo','Racional','Irracional'],
         label='¿Cuál crees que fue la intención del otro jugador en sus decisiones?',
         widget=widgets.RadioSelect)
 
@@ -27,7 +27,7 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect)
 
     risker = models.StringField(
-        choices=['0 Nada preparado para tomar riesgo','1','2','3','4','5','6','7','8','9','10 Preparado para tomar riesgo'],
-        label='Como te calificarías personalmente ? En general, Te consideras alguien preparado para tomar riesgo?',
+        choices=['0 Nada preparado para tomar riesgos','1','2','3','4','5','6','7','8','9','10 Preparado para tomar riesgos'],
+        label='¿Cómo te calificarías personalmente? En general, ¿Te consideras alguien preparado para tomar riesgos o tratas de evitarlos?',
         widget=widgets.RadioSelect)
 
