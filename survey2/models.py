@@ -31,7 +31,7 @@ class Player(BasePlayer):
         widget=widgets.TextInput)
 
     dialect = models.StringField(
-        label='Se identifica usted como hablante de un dialecto particular o variedad de este idioma (o idiomas)? ¿En caso afirmativo, como se llama ese dialecto o en dónde se habla?',
+        label='Se identifica usted como hablante de un dialecto particular o variedad de este idioma (o idiomas)? ¿En caso afirmativo, cómo se llama ese dialecto o en dónde se habla?',
         widget=widgets.TextInput)
 
     other_langs = models.StringField(
@@ -73,8 +73,8 @@ class Player(BasePlayer):
         widget=widgets.TextInput)
 
     education_level = models.StringField(
-        choices=['Ningún','Educación Inicial (Jardín)','Educación General Básica (Primaria)','Bachillerato (Secundaria)',
-        'Algunos estudios universitarios','Instituto','Licenciatura o equivalente',
+        choices=['Ninguno','Educación Inicial (Jardín)','Educación General Básica (Primaria)','Bachillerato (Secundaria)',
+        'Algo de estudios universitarios (actualmente o pasado)','Instituto Técnico','Licenciatura o equivalente',
         'Maestría o equivalente','Doctorado'],
         label='¿Cuál es su nivel educativo?',
         widget=widgets.RadioSelect)
@@ -99,8 +99,8 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect)
 
     parents_edu_level = models.StringField(
-        choices=['Ningún','Educación Inicial (Jardín)','Educación General Básica (Primaria)','Bachillerato (Secundaria)',
-        'Algunos estudios universitarios','Instituto','Licenciatura o equivalente',
+        choices=['Ninguno','Educación Inicial (Jardín)','Educación General Básica (Primaria)','Bachillerato (Secundaria)',
+        'Algunos estudios universitarios','Instituto Técnico','Licenciatura o equivalente',
         'Maestría o equivalente','Doctorado'],
         label='Hasta donde sabe, ¿cuál es el nivel educativo más alto que alcanzó alguno de sus padres (el que tenga más estudios)?',
         widget=widgets.RadioSelect)
