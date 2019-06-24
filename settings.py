@@ -29,19 +29,19 @@ SESSION_CONFIGS = [
         'name': 'control1',
         'display_name': 'Decision Making Activity: Treatment 1 (Español)',
         'num_demo_participants': 2,
-        'app_sequence': ['control1', 'gamble', 'survey', 'payment_info'],
+        'app_sequence': ['control1', 'gamble', 'survey', 'survey2', 'payment_info'],
     },
     {
         'name': 'control2',
         'display_name': 'Decision Making Activity: Treatment 2 (Español)',
         'num_demo_participants': 2,
-        'app_sequence': ['control2', 'gamble', 'survey', 'payment_info'],
+        'app_sequence': ['control2', 'gamble', 'survey', 'survey2', 'payment_info'],
     },
     {
         'name': 'all',
         'display_name': 'Decision Making Activity: Random (Español)',
         'num_demo_participants': 2,
-        'app_sequence': ['selector', 'control', 'control1', 'control2', 'gamble', 'survey', 'payment_info'],
+        'app_sequence': ['selector', 'control', 'control1', 'control2', 'gamble', 'survey', 'survey2', 'payment_info'],
     }
 ]
 
