@@ -31,7 +31,7 @@ class Player(BasePlayer):
         widget=widgets.TextInput)
 
     dialect = models.StringField(
-        label='Se identifica usted como hablante de un dialecto particular o variedad de este idioma (o idiomas)? ¿En caso afirmativo, cómo se llama ese dialecto o en dónde se habla?',
+        label='Se identifica usted como hablante de un dialecto particular o variedad de este idioma (o idiomas)? ¿En caso afirmativo, cómo se llama ese dialecto o en dónde se habla?' ,
         widget=widgets.TextInput)
 
     other_langs = models.StringField(
@@ -60,7 +60,7 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect)
 
     other_countries = models.StringField(
-        label='Si ha vivido en otros países además de aquel en que nació, por favor indique en cuáles señalando cuántos años vivió en cada uno. Use el siguiente formato: EEUU, 4, Francia, 2, Chile, 1, etc.',
+        label='Si ha vivido en otros países además de aquel en que nació, por favor indique en cuáles señalando cuántos años vivió en cada uno. Use el siguiente formato: EEUU, 4, Francia, 2, Chile, 1, etc. Si no ha vivido en otros paises, escribe \'NA\'.',
         widget=widgets.TextInput)
 
     bool_student = models.StringField(
