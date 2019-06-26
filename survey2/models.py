@@ -31,7 +31,7 @@ class Player(BasePlayer):
         widget=widgets.TextInput)
 
     dialect = models.StringField(
-        label='Se identifica usted como hablante de un dialecto particular o variedad de este idioma (o idiomas)? ¿En caso afirmativo, cómo se llama ese dialecto o en dónde se habla?' ,
+        label='¿Se identifica usted como hablante de un dialecto particular o variedad de este idioma (o idiomas)? ¿En caso afirmativo, cómo se llama ese dialecto o en dónde se habla?' ,
         widget=widgets.TextInput)
 
     other_langs = models.StringField(
