@@ -2,11 +2,7 @@
 {% load otree %}
 
 {% block title %}
-    {% if player.round_number == 1 %}
-        Ronda de Prueba: Su eleccion
-    {% else %}
-        Su eleccion
-    {% endif %}
+    Su elección
 {% endblock %}
 
 {% block styles %}
@@ -35,7 +31,9 @@
         {% else %}
 
     <h2> Usted es la Persona 2 </h2>
-
+    <p>
+        La decision de la Persona 1 es: "Yo elijo {{player.other_player.decision}}".
+    </p>
     {% formfield player.decision label="Su elección es:" %}
 
         {% endif %}
