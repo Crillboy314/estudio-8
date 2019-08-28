@@ -1,0 +1,63 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Instrucciones
+{% endblock %}
+
+{% block content %}
+    {% if player.id_in_group == 1 %}
+
+    <p>
+        Usted ha sido asignado al azar el rol de la <strong>Persona 1</strong>, mientras el otro jugador es la Persona 2. Durante la actividad
+        usted va a ver una figura como la siguiente. La figura le va a ayudar a identificar todos los pagos posibles en el escenario en base a su decision y la del otro participante.
+        Como Persona 1, usted tiene dos opciones <strong>A</strong> o <strong>B</strong> ubicadas en la parte superior de la figura. Una vez que usted tome su
+        decisión, usted no puede cambiar de parecer. La Persona 2 no va a saber su elección al momento que esté tomando una decisión, y usted no va a saber la decisión de la Persona 2.
+        Despues de que los dos hayan tomado sus decisiones, cada uno va a saber cuál fue su pago y la elección de su compañero.
+    </p>
+
+    <img src="{% static "control/control-graph.png" %}" class="center" width="80%" height="80%" />
+    <p>
+        Cuando usted elige <strong>A</strong> en la Figura 1, entonces los siguientes resultados son posibles:
+        <ol>
+            <li>Si la Persona 2 elige <strong>A</strong>, entonces los dos van a recibir <strong>10 puntos</strong> cada uno.</li>
+            <li>Si la Persona 2 elige <strong>B</strong>, entonces usted va a recibir <strong>70 puntos</strong> y la Persona 2 va a recibir <strong>20 puntos</strong>.</li>
+        </ol>
+        Por otro lado, cuando usted elige <strong>B</strong>, entonces los siguientes resultados son posibles:
+        <ol>
+            <li>Si la Persona 2 elige <strong>A</strong>, entonces usted va a recibir <strong>20 puntos</strong> y la Persona 2 va a recibir <strong>70 puntos</strong>.</li>
+            <li>Si la Persona 2 elige <strong>B</strong>, entonces los dos van a recibir <strong>40 puntos</strong> cada uno.</li>
+        </ol>
+        En este momento vamos a responder cualquier pregunta que usted pueda tener, por favor levante la mano. 
+    </p>
+
+    {% else %}
+
+    <p>
+        Usted ha sido asignado al azar el rol de la <strong>Persona 2</strong>, mientras el otro jugador es la Persona 1. Durante la actividad
+        usted va a ver una figura como la siguiente. La figura le va a ayudar a identificar todos los pagos posibles en el escenario en base a su decisión y la del otro participante.
+        Como Persona 2, usted tiene dos opciones <strong>A</strong> o <strong>B</strong> ubicadas en la parte inferior de la figura. Una vez que usted tome su
+        decisión, usted no puede cambiar de parecer. La Persona 1 no va a saber su elección al momento que esté tomando una decisión, y usted no va a saber la decisión de la Persona 1.
+        Despues de que los dos hayan tomado sus decisiones, cada uno va a saber cual fue su pago y la elección de su companero.
+    </p>
+
+   <img src="{% static "control/control-graph.png" %}" width="80%" height="80%" class="center" />
+    <p>
+        Cuando usted elige <strong>A</strong> en la Figura 1, entonces los siguientes resultados son posibles:
+        <ol>
+            <li>Si la Persona 1 elige <strong>A</strong>, entonces los dos van a recibir <strong>10 puntos</strong> cada uno.</li>
+            <li>Si la Persona 1 elige <strong>B</strong>, entonces usted va a recibir <strong>20 puntos</strong> y la Persona 1 va a recibir <strong>70 puntos</strong>.</li>
+        </ol>
+        Por otro lado, cuando usted elige <strong>B</strong>, entonces los siguientes resultados son posibles:
+        <ol>
+            <li>Si la Persona 1 elige <strong>A</strong>, entonces usted va a recibir <strong>70 puntos</strong> y la Persona 1 va a recibir <strong>20 puntos</strong>.</li>
+            <li>Si la Persona 1 elige <strong>B</strong>, entonces los dos van a recibir <strong>40 puntos</strong> cada uno.</li>
+        </ol>
+        En este momento vamos a responder cualquier pregunta que usted pueda tener, por favor levante la mano.
+    </p>
+
+    {% endif %}
+
+    {% next_button %}
+
+{% endblock %}

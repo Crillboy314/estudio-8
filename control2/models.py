@@ -3,7 +3,6 @@ from otree.api import (
     Currency as c, currency_range
 )
 
-
 doc = """
 This is a decision-making activity. Two participants send messages and are asked separately
 whether they want option A or option B with different symbols. Their choices directly determine the
@@ -14,10 +13,7 @@ payoffs to each of the participants.
 class Constants(BaseConstants):
     name_in_url = 'control2'
     players_per_group = 2
-    num_rounds = 2
-
-    instructions_template = 'control2/Instructions.html'
-    message_template = 'control2/Message.html'
+    num_rounds = 1
 
     endowment = c(5)
     message_cost = c(5)
@@ -90,16 +86,10 @@ class Group(BaseGroup):
                 }
         }
 
-        if self.round_number == 1:
-            p1.trial_payoff = payoff_matrix[p1.decision][
+        p1.payoff = payoff_matrix[p1.decision][
                             p2.decision] + Constants.endowment - p1.paid_msg * Constants.message_cost
-            p2.trial_payoff = payoff_matrix[p2.decision][
+        p2.payoff = payoff_matrix[p2.decision][
                             p1.decision] + Constants.endowment - p2.paid_msg * Constants.message_cost
-        else:
-            p1.payoff = payoff_matrix[p1.decision][
-                                  p2.decision] + Constants.endowment - p1.paid_msg * Constants.message_cost
-            p2.payoff = payoff_matrix[p2.decision][
-                                  p1.decision] + Constants.endowment - p2.paid_msg * Constants.message_cost
 
     def check_Ask(self):
         N = self.send_message == 'ask' or self.send_answer == 'ask'
@@ -126,9 +116,11 @@ class Player(BasePlayer):
         return self.get_others_in_group()[0]
 
     question_1 = models.IntegerField(
-    label = "Suponga que usted es la Primera Persona, y que selecciona el símbolo de la derecha, ¿cuál sería su pago si la Segunda Persona también elige el símbolo de la derecha?",
-    min=10,max=70)
+        label="Suponga que usted es la Primera Persona, y que selecciona el símbolo de la derecha, ¿cuál sería su pago "
+              "si la Segunda Persona también elige el símbolo de la derecha?",
+        min=10, max=70)
 
     question_2 = models.IntegerField(
-    label = "Suponga que usted es la Segunda Persona, y selecciona el símbolo de la derecha, ¿cuál sería su pago si la Primera Persona elige el símbolo de la izquierda?",
-    min=10,max=70)
+        label="Suponga que usted es la Segunda Persona, y selecciona el símbolo de la derecha, ¿cuál sería su pago si "
+              "la Primera Persona elige el símbolo de la izquierda?",
+        min=10, max=70)

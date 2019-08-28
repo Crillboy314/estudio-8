@@ -1,22 +1,16 @@
 from ._builtin import Page, WaitPage
-from otree.api import Currency as c, currency_range
-from .models import Constants
 
 
-class Introduction(Page):
-    def vars_for_template(self):
-        return {
-            'sufee' : self.session.config['participation_fee'],
-            'erpoint' : self.session.config['real_world_currency_per_point']*100
-        }
-
-    def is_displayed(self):
-        return self.round_number == 1
-
-
-class Tree(Page):
-    def is_displayed(self):
-        return self.round_number == 1
+# class Introduction(Page):
+#     def vars_for_template(self):
+#         return {
+#             'sufee' : self.session.config['participation_fee'],
+#             'erpoint' : self.session.config['real_world_currency_per_point']*100
+#         }
+#
+#
+# class Tree(Page):
+#     pass
 
 
 class SendMessageP1(Page):
@@ -41,9 +35,22 @@ class SendMessageP2(Page):
         return self.player.id_in_group == 2
 
 
-class Decision(Page):
+class DecisionP1(Page):
+    template_name = 'control1/Decision.html'
     form_model = 'player'
     form_fields = ['decision']
+
+    def is_displayed(self):
+        return self.player.id_in_group == 1
+
+
+class DecisionP2(Page):
+    template_name = 'control1/Decision.html'
+    form_model = 'player'
+    form_fields = ['decision']
+
+    def is_displayed(self):
+        return self.player.id_in_group == 2
 
 
 class ResultsWaitPage(WaitPage):
@@ -56,7 +63,6 @@ class Results(Page):
     def vars_for_template(self):
         me = self.player
         opponent = me.other_player()
-        fee = self.session.config['participation_fee']
         return {
             'my_decision': me.decision,
             'opponent_decision': opponent.decision,
@@ -64,35 +70,33 @@ class Results(Page):
         }
 
     def app_after_this_page(self, upcoming_apps):
-        if self.round_number == 2:
-            return 'gamble'
+        return 'gamble'
 
 
-class Quiz(Page):
-    form_model = 'player'
-    form_fields = ['question_1', 'question_2']
-
-    def error_message(self, values):
-        if values['question_1'] != 40 and values['question_2'] != 20:
-            return 'Ambas preguntas son incorrectas'
-        elif values['question_1'] == 40 and values['question_2'] != 20:
-            return 'Pregunta 2 es incorrecta'
-        elif values['question_1'] != 40 and values['question_2'] == 20:
-            return 'Pregunta 1 es incorrecta'
-
-    def is_displayed(self):
-        return self.round_number == 1
+# class Quiz(Page):
+#     form_model = 'player'
+#     form_fields = ['question_1', 'question_2']
+#
+#     def error_message(self, values):
+#         if values['question_1'] != 40 and values['question_2'] != 20:
+#             return 'Ambas preguntas son incorrectas'
+#         elif values['question_1'] == 40 and values['question_2'] != 20:
+#             return 'Pregunta 2 es incorrecta'
+#         elif values['question_1'] != 40 and values['question_2'] == 20:
+#             return 'Pregunta 1 es incorrecta'
 
 
 page_sequence = [
-    Introduction,
-    Tree,
-    Quiz,
+    # Introduction,
+    # Tree,
+    # Quiz,
     SendMessageP1,
     Wait,
     SendMessageP2,
     Wait,
-    Decision,
+    DecisionP1,
+    Wait,
+    DecisionP2,
     ResultsWaitPage,
     Results
 ]

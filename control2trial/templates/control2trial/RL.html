@@ -1,8 +1,8 @@
 {% extends "global/Page.html" %}
-{% load otree %}
+{% load otree static %}
 
 {% block title %}
-    Su eleccion
+    Ronda de prueba: Su mensaje
 {% endblock %}
 
 {% block styles %}
@@ -18,7 +18,7 @@
 {% endblock %}
 
 {% block content %}
-        {% if player.id_in_group == 1 %}
+        {% if player.pNum == 1 %}
 
             <img src="{% static 'control/control2-graph-P1.png' %}" class="center" width="80%" height="80%" />
 
@@ -27,47 +27,42 @@
             <img src="{% static 'control/control2-graph-P2.png' %}" class="center" width="80%" height="80%" />
 
         {% endif %}
+
 <br />
 <div class="form-group required">
-    {% if player.id_in_group == 1 %}
+    {% if player.pNum == 1 %}
     <h2> Usted es la Persona 1 </h2>
     <p>
-        El mensaje de la Persona 2 es: "Yo elijo
-        {% if group.ask_answer%}
-            {% if group.send_answer == 'R' %}
+        {% if player.send_answer != None %} {%if player.send_answer != 'ask' %} Mensaje de la Persona 2: "Yo escojo
+            {% if player.send_answer == 'R' %}
                 <img src="{% static 'control/right.png' %}" width="10%" height="10%"/>
             {% else %}
                 <img src="{% static 'control/left.png' %}" width="10%" height="10%"/>
             {% endif %}
-        ".
-        {% else %}
-        {{group.get_send_answer_display}}".
-        {% endif %}
-        <br>
-        ¿Cuál es su decisión final?
+        ". {% endif %} {% endif %}<br>
     </p>
-    {% formfield player.decision label="Su elección es:" %}
+    <p> Su mensaje hacia el otro participante?<br>Esta no es su respuesta final </p>
+        {{ form.send_message.0 }} <img src="{% static 'control/left.png' %}" width="10%" height="10%"/> <br> <br>
+        {{ form.send_message.1 }} <img src="{% static 'control/right.png' %}" width="10%" height="10%"/> <br>
+        {{ form.send_message.errors}}
     {% else %}
     <h2> Usted es la Persona 2 </h2>
     <p>
-        La decision de la Persona 1 es: "Yo elijo
-        {% if group.ask_answer%}
-            {% if player.other_player.decision == 'R' %}
+        {% if player.send_message != None %} {% if player.send_message != 'ask' %} Mensaje de la Persona 1: "Yo escojo
+            {% if player.send_message == 'R' %}
                 <img src="{% static 'control/right.png' %}" width="10%" height="10%"/>
             {% else %}
                 <img src="{% static 'control/left.png' %}" width="10%" height="10%"/>
             {% endif %}
-        ".
-        {% else %}
-        {{ other_decision }}".
-        {% endif %}
-        <br>
-        ¿Cuál es su decisión final?
+        ". {% endif %} {% endif %}<br>
     </p>
-    {% formfield player.decision label="Su elección es:" %}
+    <p> Su mensaje hacia el otro participante?<br>Esta no es su respuesta final </p>
+        {{ form.send_answer.0 }} <img src="{% static 'control/left.png' %}" width="10%" height="10%"/> <br> <br>
+        {{ form.send_answer.1 }} <img src="{% static 'control/right.png' %}" width="10%" height="10%"/> <br>
+        {{ form.send_answer.errors}}
     {% endif %}
 </div>
 
-    {% next_button %}
+{% next_button %}
 
 {% endblock %}

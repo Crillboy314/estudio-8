@@ -1,8 +1,8 @@
 {% extends "global/Page.html" %}
-{% load otree %}
+{% load otree static %}
 
 {% block title %}
-    Su mensaje
+    Ronda de Prueba: Su eleccion
 {% endblock %}
 
 {% block styles %}
@@ -25,21 +25,17 @@
     {% if player.id_in_group == 1 %}
 
     <h2> Usted es la Persona 1 </h2>
-    <p>
-        ¿Qué mensaje le quiere mandar a la Persona 2?<br>
-        Esta no es su decisión final, usted puede cambiar de decisión posteriormente.
-    </p>
-    {% formfield group.send_message label = "" %}
+
+    {% formfield player.decision label="Su elección es:" %}
 
         {% else %}
 
     <h2> Usted es la Persona 2 </h2>
     <p>
-        La Persona 1 dice: "{{group.get_send_message_display}}". <br>
-        ¿Qué mensaje le quiere mandar a la Persona 1?<br>
-        Esta no es su decisión final, usted puede cambiar de decisión posteriormente.
+        La decision de la Persona 1 es: "Yo elijo {{player.bot_decision}}".
     </p>
-    {% formfield group.send_answer label = "" %}
+
+    {% formfield player.decision label="Su elección es:" %}
 
         {% endif %}
 </div>

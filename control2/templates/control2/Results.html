@@ -31,18 +31,11 @@
         {% endif %}
     </p>
 
-    {% if player.round_number == 1 %}
-    <p>
-        Como resultado, usted ganó <strong>{{ player.trial_payoff }}</strong> en base a su decisión y la decisión del otro jugador, y en
-        cómo utilizó su asignación inicial. Esto no se agrega a su pago final. La ronda de prueba ha terminado, ahora iniciara la actividad.
-    </p>
-    {% else %}
     <p>
         Como resultado, usted ganó <strong>{{ player.payoff }}</strong> en base a su decisión y la decisión del otro jugador, y en
         cómo utilizó su asignación inicial. El monto total de dinero que usted ha ganado en la actividad es
         <strong>{{ participant.payoff_plus_participation_fee }}</strong>, lo cuál incluye su pago por participar.
     </p>
-    {% endif %}
 
 
 

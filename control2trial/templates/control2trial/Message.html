@@ -1,8 +1,8 @@
 {% extends "global/Page.html" %}
-{% load otree %}
+{% load otree static %}
 
 {% block title %}
-    Su mensaje
+        Ronda de prueba: Su mensaje
 {% endblock %}
 
 {% block styles %}
@@ -18,7 +18,7 @@
 {% endblock %}
 
 {% block content %}
-        {% if player.id_in_group == 1 %}
+        {% if player.pNum == 1 %}
 
             <img src="{% static 'control/control2-graph-P1.png' %}" class="center" width="80%" height="80%" />
 
@@ -30,18 +30,18 @@
 
 <br />
 <div class="form-group required">
-    {% if player.id_in_group == 1 %}
+    {% if player.pNum == 1 %}
     <h2> Usted es la Persona 1 </h2>
     <p>
-        {% if group.send_answer != None %} {%if group.send_answer != 'ask' %} Mensaje de la Persona 2: "Yo elijo {{group.get_send_answer_display}}". {% endif %} {% endif %}<br>
+        {% if player.send_answer != None %} {%if player.send_answer != 'ask' %} Mensaje de la Persona 2: "Yo elijo {{player.get_bot_answer_display}}". {% endif %} {% endif %}<br>
     </p>
-    {% formfield group.send_message label="Su mensaje hacia el otro participante? <br>Esta no es su respuesta final" %}
+    {% formfield player.send_message label="Su mensaje hacia el otro participante? <br>Esta no es su respuesta final" %}
     {% else %}
     <h2> Usted es la Persona 2 </h2>
     <p>
-        {% if group.send_message != None %} {% if group.send_message != 'ask' %} Mensaje de la Persona 1: "Yo elijo {{group.get_send_message_display}}". {% endif %} {% endif %}<br>
+        {% if player.send_message != None %} {% if player.send_message != 'ask' %} Mensaje de la Persona 1: "Yo elijo {{player.get_bot_answer_display}}". {% endif %} {% endif %}<br>
     </p>
-    {% formfield group.send_answer label="Su mensaje hacia el otro participante? <br>Esta no es su respuesta final" %}
+    {% formfield player.send_answer label="Su mensaje hacia el otro participante? <br>Esta no es su respuesta final" %}
     {% endif %}
         {% next_button %}
 </div>

@@ -1,28 +1,21 @@
 from ._builtin import Page, WaitPage
-from otree.api import Currency as c, currency_range
 from .models import Constants
 
-class Introduction(Page):
-    def vars_for_template(self):
-        return {
-            'sufee' : self.session.config['participation_fee'],
-            'erpoint' : self.session.config['real_world_currency_per_point']*100
-        }
 
-    def is_displayed(self):
-        return self.round_number == 1
-
-
-class Tree1(Page):
-
-    def is_displayed(self):
-        return self.round_number == 1
-
-
-class Tree2(Page):
-
-    def is_displayed(self):
-        return self.round_number == 1
+# class Introduction(Page):
+#     def vars_for_template(self):
+#         return {
+#             'sufee' : self.session.config['participation_fee'],
+#             'erpoint' : self.session.config['real_world_currency_per_point']*100
+#         }
+#
+#
+# class Tree1(Page):
+#     pass
+#
+#
+# class Tree2(Page):
+#     pass
 
 
 class RLC_P1(Page):
@@ -35,12 +28,13 @@ class RLC_P1(Page):
 
     def send_message_choices(self):
         choices = [
-                ['LC', 'Yo elijo ' + Constants.P1_codified_L],
-                ['RC', 'Yo elijo ' + Constants.P1_codified_R]
+            ['LC', 'Yo elijo ' + Constants.P1_codified_L],
+            ['RC', 'Yo elijo ' + Constants.P1_codified_R]
         ]
         if not self.group.ask_used:
             choices.append(
-                ['ask', 'Pida al otro participante que revele el lado de la figura que planean elegir por un costo de 5 puntos']
+                ['ask',
+                 'Pida al otro participante que revele el lado de la figura que planean elegir por un costo de 5 puntos']
             )
         return choices
 
@@ -59,7 +53,7 @@ class RLC_P2(Page):
     form_fields = ['send_answer']
 
     def is_displayed(self):
-        return self.player.id_in_group == 2 and (self.group.send_answer is None or self.group.send_answer =='ask')
+        return self.player.id_in_group == 2 and (self.group.send_answer is None or self.group.send_answer == 'ask')
 
     def send_answer_choices(self):
         choices = [
@@ -68,7 +62,8 @@ class RLC_P2(Page):
         ]
         if not self.group.ask_used:
             choices.append(
-                ['ask', 'Pida al otro participante que revele el lado de la figura que planean elegir por un costo de 5 puntos']
+                ['ask',
+                 'Pida al otro participante que revele el lado de la figura que planean elegir por un costo de 5 puntos']
             )
         return choices
 
@@ -129,15 +124,19 @@ class RL_P2(Page):
         return choices
 
 
-class Decision(Page):
+class DecisionP1(Page):
+    template_name = 'control2/Decision.html'
     form_model = 'player'
     form_fields = ['decision']
+
+    def is_displayed(self):
+        return self.player.id_in_group == 1
 
     def decision_choices(self):
         if self.player.id_in_group == 1:
             choices = [
-                ['L',Constants.P1_codified_L],
-                ['R',Constants.P1_codified_R]
+                ['L', Constants.P1_codified_L],
+                ['R', Constants.P1_codified_R]
             ]
         else:
             choices = [
@@ -145,6 +144,39 @@ class Decision(Page):
                 ['R', Constants.P2_codified_R]
             ]
         return choices
+
+
+class DecisionP2(Page):
+    template_name = 'control2/Decision.html'
+    form_model = 'player'
+    form_fields = ['decision']
+
+    def is_displayed(self):
+        return self.player.id_in_group == 2
+
+    def decision_choices(self):
+        if self.player.id_in_group == 1:
+            choices = [
+                ['L', Constants.P1_codified_L],
+                ['R', Constants.P1_codified_R]
+            ]
+        else:
+            choices = [
+                ['L', Constants.P2_codified_L],
+                ['R', Constants.P2_codified_R]
+            ]
+        return choices
+
+    def vars_for_template(self):
+        d = self.player.other_player().decision
+        if d == 'R':
+            return {
+                'other_decision': Constants.P1_codified_R
+            }
+        else:
+            return {
+                'other_decision': Constants.P1_codified_L
+            }
 
 
 class ResultsWaitPage(WaitPage):
@@ -156,7 +188,6 @@ class Results(Page):
     def vars_for_template(self):
         me = self.player
         opponent = me.other_player()
-        fee = self.session.config['participation_fee']
         return {
             'my_decision': me.decision,
             'opponent_decision': opponent.decision,
@@ -164,30 +195,29 @@ class Results(Page):
         }
 
     def app_after_this_page(self, upcoming_apps):
-        if self.round_number == 2:
-            return 'gamble'
+        return 'gamble'
 
 
-class Quiz(Page):
-    form_model = 'player'
-    form_fields = ['question_1', 'question_2']
-
-    def is_displayed(self):
-        return self.round_number == 1
-
-    def error_message(self, values):
-        if values['question_1'] != 40 and values['question_2'] != 20:
-            return 'Ambas preguntas son incorrectas'
-        elif values['question_1'] == 40 and values['question_2'] != 20:
-            return 'Pregunta 2 es incorrecta'
-        elif values['question_1'] != 40 and values['question_2'] == 20:
-            return 'Pregunta 1 es incorrecta'
+# class Quiz(Page):
+#     form_model = 'player'
+#     form_fields = ['question_1', 'question_2']
+#
+#     def is_displayed(self):
+#         return self.round_number == 1
+#
+#     def error_message(self, values):
+#         if values['question_1'] != 40 and values['question_2'] != 20:
+#             return 'Ambas preguntas son incorrectas'
+#         elif values['question_1'] == 40 and values['question_2'] != 20:
+#             return 'Pregunta 2 es incorrecta'
+#         elif values['question_1'] != 40 and values['question_2'] == 20:
+#             return 'Pregunta 1 es incorrecta'
 
 page_sequence = [
-    Introduction,
-    Tree1,
-    Tree2,
-    Quiz,
+    # Introduction,
+    # Tree1,
+    # Tree2,
+    # Quiz,
     RLC_P1,
     Wait,
     YesNo_P2,
@@ -206,7 +236,9 @@ page_sequence = [
     Wait,
     RLC_P2,
     Wait,
-    Decision,
+    DecisionP1,
+    Wait,
+    DecisionP2,
     ResultsWaitPage,
     Results
 ]
