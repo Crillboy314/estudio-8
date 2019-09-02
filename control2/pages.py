@@ -34,7 +34,7 @@ class RLC_P1(Page):
         if not self.group.ask_used:
             choices.append(
                 ['ask',
-                 'Pida al otro participante que revele el lado de la figura que planean elegir por un costo de 5 puntos']
+                 'Pida al otro participante que revele el lado de la figura que planea elegir por un costo de 5 puntos']
             )
         return choices
 
@@ -63,7 +63,7 @@ class RLC_P2(Page):
         if not self.group.ask_used:
             choices.append(
                 ['ask',
-                 'Pida al otro participante que revele el lado de la figura que planean elegir por un costo de 5 puntos']
+                 'Pida al otro participante que revele el lado de la figura que planea elegir por un costo de 5 puntos']
             )
         return choices
 
