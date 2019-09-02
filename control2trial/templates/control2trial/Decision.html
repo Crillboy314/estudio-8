@@ -30,7 +30,7 @@
 <br />
 <div class="form-group required">
     {% if player.pNum == 1 %}
-    <h2> You are First Person </h2>
+    <h2> Usted es la persona 1 </h2>
     <p>
         El mensaje de la Persona 2 es: "Yo elijo
         {% if player.ask_answer%}
@@ -44,11 +44,11 @@
         {{player.get_bot_answer_display}}".
         {% endif %}
         <br>
-        What is your final decision?
+        Cual es su decisión final?
     </p>
     {% formfield player.decision label="Your choice is:" %}
     {% else %}
-    <h2> You are Second Person </h2>
+    <h2> Usted es la Persona 2 </h2>
     <p>
         La decision de la Persona 1 es: "Yo elijo
         {% if player.ask_answer%}
@@ -62,7 +62,7 @@
         {{player.get_bot_answer_display}}".
         {% endif %}
         <br>
-        What is your final decision?
+        Cual es su decision final?
     </p>
     {% formfield player.decision label="Your choice is:" %}
     {% endif %}
