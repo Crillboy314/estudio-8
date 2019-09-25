@@ -2,7 +2,7 @@
 {% load otree static %}
 
 {% block title %}
-        Ronda de Prueba: Su eleccion
+        Ronda de Prueba: Su mensaje
 {% endblock %}
 
 {% block styles %}
@@ -26,60 +26,25 @@
             <img src="{% static 'control/control2-graph-P2.png' %}" class="center" width="80%" height="80%" />
 
         {% endif %}
+
 <br />
 <div class="form-group required">
     {% if player.pNum == 1 %}
     <h2> Usted es la Persona 1 jugando con un robot</h2>
     <p>
-        Mensaje de la Persona 2: "Escojo
-        {% if player.ask_answer%}
-            {% if player.send_answer == 'R' %}
-                <img src="{% static 'control/right.png' %}" width="10%" height="10%"/>
-            {% else %}
-                <img src="{% static 'control/left.png' %}" width="10%" height="10%"/>
-            {% endif %}
-        ".
-        {% else %}
-        {{player.get_bot_answer_display}}".
-        {% endif %}
-        <br>
-        Cual es su decision final?
+        {% if player.send_answer != None %} {%if player.send_answer != 'ask' %} Second Person's message: "Escojo {{player.get_bot_answer_display}}". {% endif %} {% endif %}<br>
     </p>
-    {% formfield player.decision label="Your choice is:" %}
+    {% formfield player.send_message label="Su mensaje para el otro participante?<br>Esta no es su respuesta final" %}
     {% else %}
         
     <h2> Usted es la Persona 2 jugando con un robot</h2>
     <p>
-        La Persona 1 dice: "Escojo
-        {% if player.ask_answer%}
-            {% if player.send_message == 'R' %}
-                <img src="{% static 'control/right.png' %}" width="10%" height="10%"/>
-            {% else %}
-                <img src="{% static 'control/left.png' %}" width="10%" height="10%"/>
-            {% endif %}
-        ".
-        {% else %}
-        {{ player.get_bot_answer_display }}".
-        {% endif %}<br>
-        Decision de la Persona 1: "Opcion
-        {% if player.ask_answer%}
-            {% if player.bot_decision == 'R' %}
-                <img src="{% static 'control/right.png' %}" width="10%" height="10%"/>
-            {% else %}
-                <img src="{% static 'control/left.png' %}" width="10%" height="10%"/>
-            {% endif %}
-        ".
-        {% else %}
-        {{ player.get_bot_decision_display }}".
-        {% endif %}
-        <br>
-
-        Cual es su decision final?
+        {% if player.send_message != None %} {% if player.send_message != 'ask' %} First Person's message: "Escojo {{player.get_bot_answer_display}}". {% endif %} {% endif %}<br>
     </p>
-    {% formfield player.decision label="Your choice is:" %}
+    {% formfield player.send_answer label="Su mensaje para el otro participante?<br>Esta no es su respuesta final" %}
     {% endif %}
+        {% next_button %}
 </div>
 
-    {% next_button %}
 
 {% endblock %}
