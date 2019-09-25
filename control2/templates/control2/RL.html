@@ -31,7 +31,7 @@
 <br />
 <div class="form-group required">
     {% if player.id_in_group == 1 %}
-    <h2> Usted es la Persona 1 </h2>
+    <h2> Usted es la Persona 1 jugando con otro participante</h2>
     <p>
         {% if group.send_answer != None %} {%if group.send_answer != 'ask' %} Mensaje de la Persona 2: "Yo escojo
             {% if group.send_answer == 'R' %}
@@ -46,7 +46,7 @@
         {{ form.send_message.1 }} <img src="{% static 'control/right.png' %}" width="10%" height="10%"/> <br>
         {{ form.send_message.errors}}
     {% else %}
-    <h2> Usted es la Persona 2 </h2>
+    <h2> Usted es la Persona 2 jugando con otro participante</h2>
     <p>
         {% if group.send_message != None %} {% if group.send_message != 'ask' %} Mensaje de la Persona 1: "Yo escojo
             {% if group.send_message == 'R' %}
