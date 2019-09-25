@@ -7,39 +7,7 @@
 
 {% block content %}
 
-    <style>
-    .center {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 50%;
-    }
-</style>
-
-<div class="card bg-light instructions">
-    <div class="card-body">
-
-    <h3>
-        Instrucciones
-    </h3>
-
-    <link rel="stylesheet" type="text/css"
-          href="{% static 'global/matrix.css' %}"/>
-
-    <p>
-        Gracias por participar en esta actividad de toma de decisiones. Por participar en esta actividad, usted recibe <strong>$2 USD</strong>.
-        En esta actividad, usted ha sido emparejado al azar y anónimamente con otro participante. Uno de ustedes fue seleccionado al azar para tomar el rol de la  <strong>Persona 1</strong>; el otro, para tomar el rol de la <strong>Persona 2</strong>. Usted va a saber si es la
-        Persona 1 o la Persona 2 antes de tomar una decisión. Durante esta actividad, usted podrá ganar más dinero en base a
-        la decisión de usted y la de su compañero. Aquí vamos a usar puntos para determinar su pago final en base a <strong> una tasa de cambio de 10 puntos equivalentes a $1 USD</strong>. Al final de la actividad, usted va a recibir un pago en efectivo, en privado, en base
-        a su decisión y la de su compañero. Por favor, lea las instrucciones cuidadosamente para que entienda claramente cómo se determina su pago.
-        Por favor apague su celular y no hable con los otros participantes. Si tiene alguna pregunta en cualquier momento,
-        por favor levante su mano y el asistente le responderá en privado.
-        Primero, necesitará leer las reglas de la actividad y entonces tomar un examen para probar su comprensión. Después, hará una prueba
-        de la actividad que no afectará su pago final. Cuando ya se ha terminado la ronda de prueba procederá a la actividad.
-    </p>
-
-</div>
-</div>
+    {% include Constants.instructions_template %}
 
     {% next_button %}
 
