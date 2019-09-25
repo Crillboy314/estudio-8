@@ -24,7 +24,7 @@
 <div class="form-group required">
     {% if player.id_in_group == 1 %}
 
-    <h2> Usted es la Persona 1 </h2>
+    <h2> Usted es la Persona 1 jugando con un robot</h2>
     <p>
         ¿Qué mensaje le quiere mandar a la Persona 2?<br>
         Esta no es su decisión final, usted puede cambiar de decisión posteriormente.
@@ -33,7 +33,7 @@
 
         {% else %}
 
-    <h2> Usted es la Persona 2 </h2>
+    <h2> Usted es la Persona 2 jugando con un robot</h2>
     <p>
         La Persona 1 dice: "{{player.get_send_message_display}}". <br>
         ¿Qué mensaje le quiere mandar a la Persona 1?<br>
