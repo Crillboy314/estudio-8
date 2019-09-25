@@ -12,7 +12,6 @@
         .highlight-row-on-hover:hover td {
             background-color: #fcf8e3;
         }
-
     </style>
 
 {% endblock %}
@@ -30,9 +29,9 @@
 <br />
 <div class="form-group required">
     {% if player.pNum == 1 %}
-    <h2> Usted es la persona 1 </h2>
+    <h2> Usted es la Persona 1 jugando con un robot</h2>
     <p>
-        El mensaje de la Persona 2 es: "Yo elijo
+        Mensaje de la Persona 2: "Escojo
         {% if player.ask_answer%}
             {% if player.send_answer == 'R' %}
                 <img src="{% static 'control/right.png' %}" width="10%" height="10%"/>
@@ -44,13 +43,14 @@
         {{player.get_bot_answer_display}}".
         {% endif %}
         <br>
-        Cual es su decisión final?
+        Cual es su decision final?
     </p>
     {% formfield player.decision label="Your choice is:" %}
     {% else %}
-    <h2> Usted es la Persona 2 </h2>
+        
+    <h2> Usted es la Persona 2 jugando con un robot</h2>
     <p>
-        La decision de la Persona 1 es: "Yo elijo
+        La Persona 1 dice: "Escojo
         {% if player.ask_answer%}
             {% if player.send_message == 'R' %}
                 <img src="{% static 'control/right.png' %}" width="10%" height="10%"/>
@@ -59,9 +59,21 @@
             {% endif %}
         ".
         {% else %}
-        {{player.get_bot_answer_display}}".
+        {{ player.get_bot_answer_display }}".
+        {% endif %}<br>
+        Decision de la Persona 1: "Opcion
+        {% if player.ask_answer%}
+            {% if player.bot_decision == 'R' %}
+                <img src="{% static 'control/right.png' %}" width="10%" height="10%"/>
+            {% else %}
+                <img src="{% static 'control/left.png' %}" width="10%" height="10%"/>
+            {% endif %}
+        ".
+        {% else %}
+        {{ player.get_bot_decision_display }}".
         {% endif %}
         <br>
+
         Cual es su decision final?
     </p>
     {% formfield player.decision label="Your choice is:" %}
