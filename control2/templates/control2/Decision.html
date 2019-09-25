@@ -1,8 +1,8 @@
 {% extends "global/Page.html" %}
-{% load otree %}
+{% load otree static %}
 
 {% block title %}
-    Su eleccion
+        Su eleccion
 {% endblock %}
 
 {% block styles %}
@@ -12,7 +12,6 @@
         .highlight-row-on-hover:hover td {
             background-color: #fcf8e3;
         }
-
     </style>
 
 {% endblock %}
@@ -30,9 +29,9 @@
 <br />
 <div class="form-group required">
     {% if player.id_in_group == 1 %}
-    <h2> Usted es la Persona 1 </h2>
+    <h2> Usted es la Persona 1 jugando con otro participante</h2>
     <p>
-        El mensaje de la Persona 2 es: "Yo elijo
+        La Persona 2 dice: "Escojo
         {% if group.ask_answer%}
             {% if group.send_answer == 'R' %}
                 <img src="{% static 'control/right.png' %}" width="10%" height="10%"/>
@@ -44,13 +43,25 @@
         {{group.get_send_answer_display}}".
         {% endif %}
         <br>
-        ¿Cuál es su decisión final?
+        Cual es su decision final?
     </p>
-    {% formfield player.decision label="Su elección es:" %}
+    {% formfield player.decision label="Su decision es:" %}
     {% else %}
-    <h2> Usted es la Persona 2 </h2>
+        
+    <h2> Usted es la Persona 2 jugando con otro participante</h2>
     <p>
-        La decision de la Persona 1 es: "Yo elijo
+        La persona 1 dice: "Escojo
+        {% if group.ask_answer%}
+            {% if group.send_message == 'R' %}
+                <img src="{% static 'control/right.png' %}" width="10%" height="10%"/>
+            {% else %}
+                <img src="{% static 'control/left.png' %}" width="10%" height="10%"/>
+            {% endif %}
+        ".
+        {% else %}
+        {{ group.get_send_message_display }}".
+        {% endif %}<br>
+        Decision de la Persona 1: "Opcion
         {% if group.ask_answer%}
             {% if player.other_player.decision == 'R' %}
                 <img src="{% static 'control/right.png' %}" width="10%" height="10%"/>
@@ -62,9 +73,10 @@
         {{ other_decision }}".
         {% endif %}
         <br>
-        ¿Cuál es su decisión final?
+           
+        Cual es su decision final?
     </p>
-    {% formfield player.decision label="Su elección es:" %}
+    {% formfield player.decision label="Your choice is:" %}
     {% endif %}
 </div>
 
