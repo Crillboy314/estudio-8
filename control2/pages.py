@@ -143,7 +143,7 @@ class DecisionP1(Page):
                 ['L', Constants.P2_codified_L],
                 ['R', Constants.P2_codified_R]
             ]
-        return choices
+            return choices
 
 
 class DecisionP2(Page):
@@ -165,7 +165,7 @@ class DecisionP2(Page):
                 ['L', Constants.P2_codified_L],
                 ['R', Constants.P2_codified_R]
             ]
-        return choices
+            return choices
 
     def vars_for_template(self):
         d = self.player.other_player().decision
