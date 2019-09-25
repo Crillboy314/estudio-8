@@ -8,7 +8,7 @@
 {% block content %}
     {% if player.id_in_group == 1 %}
 
-    <img src="{% static "control/control2-graph-P1.png" %}" class="center" width="80%" height="80%" />
+   
 
     <p>
         Como usted es la Persona 1, usted va a elegir primero. <strong>La Persona 2 observa la misma figura que usted, pero con diferentes símbolos en ella. En otras palabras, su figura no 
@@ -34,7 +34,9 @@
         recibido estos mensajes, tiene que proceder a tomar su decisión final.
     </p>
     <p>
-        Luego de conocer el mensaje de la Persona 2, usted puede quedarse con su elección original o cambiarla por otra decisión final. La Persona 2 también puede quedarse con su primera elección o cambiarla por una decisión final. La Persona 2 va a recibir estas mismas indicaciones, pero ninguno de los dos va a saber cuál es la decisión final del otro. Las decisiones finales de las dos personas (Persona 1 y Persona 2) van a determinar el pago.
+        Luego de conocer el mensaje de la Persona 2, usted puede quedarse con su elección original o cambiarla por otra decisión final. La Persona 2 también puede quedarse con su primera elección o cambiarla por una decisión final.
+        De nuevo, usted tomara su decision final antes de la Persona 2, quien sabra de esto antes de tomar su decision, ninguno conocera la decision del otro.
+        Ambos sabrán de esto. Estas decisiones determinarán el pago. 
     </p>
 
     {% else %}
@@ -62,7 +64,9 @@
         
     </p>
     <p>
-        Luego de conocer el mensaje de la Persona 1, usted puede quedarse con su elección original o cambiarla por otra decisión final. La Persona 1 también puede quedarse con su decisión inicial o cambiarla por una decisión final. La Persona 1 va a recibir estas mismas indicaciones, sin embargo, ninguno de los dos va a saber la decisión final del otro. 
+        Luego de conocer el mensaje de la Persona 1, usted puede quedarse con su elección original o cambiarla por otra decisión final. La Persona 1 también puede quedarse con su decisión inicial o cambiarla por una decisión final. 
+        De nuevo, usted debe esperar la decision de la Persona 1 antes de tomar la suya, la Persona 1 no conocerá su decisión.
+        Ambos sabrán esto. Las decisiones finales determinarán los pagos.
         
     </p>
 
