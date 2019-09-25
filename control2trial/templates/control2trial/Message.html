@@ -31,13 +31,13 @@
 <br />
 <div class="form-group required">
     {% if player.pNum == 1 %}
-    <h2> Usted es la Persona 1 </h2>
+    <h2> Usted es la Persona 1 jugando con un robot</h2>
     <p>
         {% if player.send_answer != None %} {%if player.send_answer != 'ask' %} Mensaje de la Persona 2: "Yo elijo {{player.get_bot_answer_display}}". {% endif %} {% endif %}<br>
     </p>
     {% formfield player.send_message label="Su mensaje hacia el otro participante? <br>Esta no es su respuesta final" %}
     {% else %}
-    <h2> Usted es la Persona 2 </h2>
+    <h2> Usted es la Persona 2 jugando con un robot</h2>
     <p>
         {% if player.send_message != None %} {% if player.send_message != 'ask' %} Mensaje de la Persona 1: "Yo elijo {{player.get_bot_answer_display}}". {% endif %} {% endif %}<br>
     </p>
