@@ -32,6 +32,7 @@
     {% else %}
     <h2> Usted es la Persona 2 jugando con otro participante</h2>
     <p>
+        La Persona 1 dijo: "Yo elijo {{group.send_message}}".<br>
         La decision de la Persona 1 es: "Yo elijo {{player.other_player.decision}}".<br>
         ¿Cuál es su decisión final?
     </p>
