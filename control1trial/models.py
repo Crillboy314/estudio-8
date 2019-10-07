@@ -15,6 +15,8 @@ class Constants(BaseConstants):
     name_in_url = 'control1trial'
     players_per_group = 2
     num_rounds = 1
+    
+    instructions_template = 'control1/Instructions.html'
 
     # Payoffs depending on the situation
 
