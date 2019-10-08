@@ -20,6 +20,8 @@ class Constants(BaseConstants):
 
     endowment = c(5)
     message_cost = c(5)
+    
+    instructions_template = 'control2trial/Instructions.html'
 
     # Payoffs depending on the situation
 
