@@ -30,7 +30,7 @@ class Subsession(BaseSubsession):
 
 class Group(BaseGroup):
     send_message = models.StringField(
-        label="What message do you want to send to Second Person?",
+        label="Que mensaje le quiere mandar a la Persona 2?",
         choices=[
             ['A', 'Yo elijo A'],
             ['B', 'Yo elijo B']
@@ -38,7 +38,7 @@ class Group(BaseGroup):
         widget=widgets.RadioSelect
     )
     send_answer = models.StringField(
-        label="What message do you want to send to First Person?",
+        label="Que mensaje le quiere mandar a la Persona 1?",
         choices=[
             ['A', 'Yo elijo A'],
             ['B', 'Yo elijo B']
