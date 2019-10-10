@@ -64,11 +64,11 @@ class Player(BasePlayer):
     trial_payoff = models.CurrencyField(initial=0)
 
     question_1 = models.IntegerField(
-        label="Suppose that you are First Person, and that you select B, what would be your payout if Second Person also chooses B?",
+        label="Suponga que usted es la Persona 1 y que selecciona B, cual sería su pago si la Persona 2 tambien escoje B?",
         min=10, max=70)
 
     question_2 = models.IntegerField(
-        label="Suppose that you are Second Person, you select B, what would be your payout if the First Person chooses A?",
+        label="Suponga que usted es la Persona 2 y que selecciona B, cual sería su pago si la Persona 1 escoje A?",
         min=10, max=70)
 
     def other_player(self):
