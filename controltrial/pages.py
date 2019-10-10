@@ -19,11 +19,11 @@ class Quiz(Page):
 
     def error_message(self, values):
         if values['question_1'] != 40 and values['question_2'] != 20:
-            return 'Both questions are incorrect'
+            return 'Ambas respuestas con incorrectas'
         elif values['question_1'] == 40 and values['question_2'] != 20:
-            return 'Question 2 is incorrect'
+            return 'Respuesta 2 es incorrecta'
         elif values['question_1'] != 40 and values['question_2'] == 20:
-            return 'Question 1 is incorrect'
+            return 'Respuesta 1 es incorrecta'
 
 
 class DecisionP1(Page):
