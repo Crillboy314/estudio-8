@@ -38,7 +38,7 @@ class RLC_P1(Page):
             ['LC', 'Yo elijo ' + Constants.P1_codified_L],
             ['RC', 'Yo elijo ' + Constants.P1_codified_R]
         ]
-        if not self.group.ask_used:
+        if not self.player.ask_used:
             choices.append(
                 ['ask',
                  'Pida al otro participante que revele el lado de la figura que planean elegir por un costo de 5 puntos']
@@ -74,7 +74,7 @@ class RLC_P2(Page):
             ['LC', 'Yo elijo ' + Constants.P2_codified_L],
             ['RC', 'Yo elijo ' + Constants.P2_codified_R]
         ]
-        if not self.group.ask_used:
+        if not self.player.ask_used:
             choices.append(
                 ['ask',
                  'Pida al otro participante que revele el lado de la figura que planean elegir por un costo de 5 puntos']
