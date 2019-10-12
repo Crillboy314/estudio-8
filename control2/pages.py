@@ -2,22 +2,6 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
-# class Introduction(Page):
-#     def vars_for_template(self):
-#         return {
-#             'sufee' : self.session.config['participation_fee'],
-#             'erpoint' : self.session.config['real_world_currency_per_point']*100
-#         }
-#
-#
-# class Tree1(Page):
-#     pass
-#
-#
-# class Tree2(Page):
-#     pass
-
-
 class RLC_P1(Page):
     template_name = 'control2/Message.html'
     form_model = 'group'
@@ -133,17 +117,11 @@ class DecisionP1(Page):
         return self.player.id_in_group == 1
 
     def decision_choices(self):
-        if self.player.id_in_group == 1:
-            choices = [
-                ['L', Constants.P1_codified_L],
-                ['R', Constants.P1_codified_R]
-            ]
-        else:
-            choices = [
-                ['L', Constants.P2_codified_L],
-                ['R', Constants.P2_codified_R]
-            ]
-            return choices
+        choices = [
+            ['L', Constants.P1_codified_L],
+            ['R', Constants.P1_codified_R]
+        ]
+        return choices
 
 
 class DecisionP2(Page):
@@ -155,17 +133,11 @@ class DecisionP2(Page):
         return self.player.id_in_group == 2
 
     def decision_choices(self):
-        if self.player.id_in_group == 1:
-            choices = [
-                ['L', Constants.P1_codified_L],
-                ['R', Constants.P1_codified_R]
-            ]
-        else:
-            choices = [
-                ['L', Constants.P2_codified_L],
-                ['R', Constants.P2_codified_R]
-            ]
-            return choices
+        choices = [
+            ['L', Constants.P2_codified_L],
+            ['R', Constants.P2_codified_R]
+        ]
+        return choices
 
     def vars_for_template(self):
         d = self.player.other_player().decision
@@ -197,27 +169,7 @@ class Results(Page):
     def app_after_this_page(self, upcoming_apps):
         return 'gamble'
 
-
-# class Quiz(Page):
-#     form_model = 'player'
-#     form_fields = ['question_1', 'question_2']
-#
-#     def is_displayed(self):
-#         return self.round_number == 1
-#
-#     def error_message(self, values):
-#         if values['question_1'] != 40 and values['question_2'] != 20:
-#             return 'Ambas preguntas son incorrectas'
-#         elif values['question_1'] == 40 and values['question_2'] != 20:
-#             return 'Pregunta 2 es incorrecta'
-#         elif values['question_1'] != 40 and values['question_2'] == 20:
-#             return 'Pregunta 1 es incorrecta'
-
 page_sequence = [
-    # Introduction,
-    # Tree1,
-    # Tree2,
-    # Quiz,
     RLC_P1,
     Wait,
     YesNo_P2,
