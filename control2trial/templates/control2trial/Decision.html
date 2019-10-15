@@ -45,7 +45,7 @@
         <br>
         Cual es su decision final?
     </p>
-    {% formfield player.decision label="Your choice is:" %}
+    {% formfield player.decision label="Su eleccion es:" %}
     {% else %}
         
     <h2> Usted es la Persona 2 jugando con un robot</h2>
@@ -61,7 +61,7 @@
         {% else %}
         {{ player.get_bot_answer_display }}".
         {% endif %}<br>
-        Decision de la Persona 1: "Opcion
+        Decision de la Persona 1: "Opción
         {% if player.ask_answer%}
             {% if player.bot_decision == 'R' %}
                 <img src="{% static 'control/right.png' %}" width="10%" height="10%"/>
@@ -74,9 +74,9 @@
         {% endif %}
         <br>
 
-        Cual es su decision final?
+        Cual es su decisión final?
     </p>
-    {% formfield player.decision label="Your choice is:" %}
+    {% formfield player.decision label="Su eleccion es:" %}
     {% endif %}
 </div>
 
