@@ -2,7 +2,7 @@
 {% load otree static %}
 
 {% block title %}
-        Su eleccion
+        Su elección
 {% endblock %}
 
 {% block styles %}
@@ -61,7 +61,7 @@
         {% else %}
         {{ group.get_send_message_display }}".
         {% endif %}<br>
-        Decision de la Persona 1: "Opcion
+        Decisión de la Persona 1: "Opción
         {% if group.ask_answer%}
             {% if player.other_player.decision == 'R' %}
                 <img src="{% static 'control/right.png' %}" width="10%" height="10%"/>
@@ -74,9 +74,9 @@
         {% endif %}
         <br>
            
-        Cual es su decision final?
+        Cual es su decisión final?
     </p>
-    {% formfield player.decision label="Your choice is:" %}
+    {% formfield player.decision label="Su decision es:" %}
     {% endif %}
 </div>
 
