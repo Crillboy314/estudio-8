@@ -32,14 +32,14 @@
     {% if player.pNum == 1 %}
     <h2> Usted es la Persona 1 jugando con un robot</h2>
     <p>
-        {% if player.send_answer != None %} {%if player.send_answer != 'ask' %} Second Person's message: "Escojo {{player.get_bot_answer_display}}". {% endif %} {% endif %}<br>
+        {% if player.send_answer != None %} {%if player.send_answer != 'ask' %} Mensaje de la Persona 2: "Escojo {{player.get_bot_answer_display}}". {% endif %} {% endif %}<br>
     </p>
     {% formfield player.send_message label="Su mensaje para el otro participante?<br>Esta no es su respuesta final" %}
     {% else %}
         
     <h2> Usted es la Persona 2 jugando con un robot</h2>
     <p>
-        {% if player.send_message != None %} {% if player.send_message != 'ask' %} First Person's message: "Escojo {{player.get_bot_answer_display}}". {% endif %} {% endif %}<br>
+        {% if player.send_message != None %} {% if player.send_message != 'ask' %} Mensaje de la persona 1: "Escojo {{player.get_bot_answer_display}}". {% endif %} {% endif %}<br>
     </p>
     {% formfield player.send_answer label="Su mensaje para el otro participante?<br>Esta no es su respuesta final" %}
     {% endif %}
