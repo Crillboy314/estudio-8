@@ -9,11 +9,11 @@
     {% if player.id_in_group == 1 %}
 
     <p>
-        Usted ha sido asignado, al azar, el rol de la <strong>Persona 1</strong>, mientras el otro jugador será la Persona 2. Durante la actividad
+        Usted ha sido asignado, al azar, el rol de la <strong>Persona 1</strong>, mientras el otro participante será la Persona 2. Durante la actividad
         usted va a ver una figura como la siguiente. La figura le va a ayudar a identificar todos los pagos posibles en el escenario consolidado en base a su decision y la del otro participante.
         Como Persona 1, usted tiene dos opciones <strong>A</strong> o <strong>B</strong> ubicadas en la parte superior de la figura. Una vez que usted tome su
-        decisión, usted no podrá cambiar de parecer. La Persona 2 no va a saber su elección al momento que esté tomando una decisión, y usted no va a saber la decisión de la Persona 2.
-        Despues de que los dos hayan tomado sus decisiones, cada uno va a saber cuál fue su pago y la elección de su compañero.
+        decisión, usted no podrá cambiar de parecer. La Persona 2 si va a saber su elección al momento que esté tomando una decisión, pero usted no va a saber la decisión de la Persona 2.
+        Despues de que los dos hayan tomado sus decisiones, cada uno va a saber cuál fue la elección de su compañero y su pago.
     </p>
 
     <img src="{% static "control/control-graph.png" %}" class="center" width="80%" height="80%" />
@@ -34,11 +34,11 @@
     {% else %}
 
     <p>
-        Usted ha sido asignado al azar el rol de la <strong>Persona 2</strong>, mientras el otro jugador es la Persona 1. Durante la actividad
+        Usted ha sido asignado al azar el rol de la <strong>Persona 2</strong>, mientras el otro participante es la Persona 1. Durante la actividad
         usted va a ver una figura como la siguiente. La figura le va a ayudar a identificar todos los pagos posibles en el escenario en base a su decisión y la del otro participante.
         Como Persona 2, usted tiene dos opciones <strong>A</strong> o <strong>B</strong> ubicadas en la parte inferior de la figura. Una vez que usted tome su
-        decisión, usted no podrá cambiar de parecer. La Persona 1 no va a saber su elección al momento que esté tomando una decisión, y usted no va a saber la decisión de la Persona 1.
-        Despues de que los dos hayan tomado sus decisiones, cada uno va a saber cual fue su pago y la elección de su compañero.
+        decisión, usted no podrá cambiar de parecer. La Persona 1 no va a saber su elección al momento que esté tomando una decisión, pero usted si va a saber la decisión de la Persona 1.
+        Despues de que los dos hayan tomado sus decisiones, cada uno va a saber cual fue la elección de su compañero y su pago.
     </p>
 
    <img src="{% static "control/control-graph.png" %}" width="80%" height="80%" class="center" />
